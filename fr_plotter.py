@@ -21,6 +21,7 @@ def main(input_file):
        xLabel = match.group(1)
   else:
     print("Please input a SAM file")
+    sys.exit(1)
   
   #Open the file and for each line split the columns
   for line in open(input_file):
