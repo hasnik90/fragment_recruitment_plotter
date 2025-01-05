@@ -64,7 +64,7 @@ def main(input_file):
                 percent_id.append(p_id)
   
   #Create the Fragment Recruiment Plot
-  size = 3
+  size = 10
   for x,y in zip(ref_pos,percent_id):
     plt.scatter(x, y, label=f'({x}, {y})',c='green', s=size, edgecolors='none')
   plt.title('Fragment Recruitment Plot for ' + xLabel)
