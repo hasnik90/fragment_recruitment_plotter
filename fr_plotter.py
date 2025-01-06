@@ -36,7 +36,7 @@ def main(input_file):
   
     #if the reference postion is positive continue to extract MD line
     else:
-       R_pos = col[3]
+       R_pos = int(col[3])
       
        #In each col line extract the values of MD line, if the value is a digit its a match and if the value is a non digit its a mismatch
        for item in col:
