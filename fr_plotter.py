@@ -36,7 +36,7 @@ def main(input_file):
   
     #if the reference postion is positive continue to extract MD line
     else:
-       R_pos = col[3]
+       R_pos = int(col[3])
       
        #In each col line extract the values of MD line, if the value is a digit its a match and if the value is a non digit its a mismatch
        for item in col:
@@ -62,15 +62,20 @@ def main(input_file):
                 #Add reference position and percent identity in two lists
                 ref_pos.append(R_pos)
                 percent_id.append(p_id)
+
+  if not ref_pos or not percent_id:
+    print("No valid alignment data found in the SAM file.")
+    sys.exit(1)
   
   #Create the Fragment Recruiment Plot
   size = 10
   for x,y in zip(ref_pos,percent_id):
     plt.scatter(x, y, label=f'({x}, {y})',c='green', s=size, edgecolors='none')
-  plt.title('Fragment Recruitment Plot for ' + xLabel)
+  plt.title(f'Fragment Recruitment Plot for {xLabel}')
   plt.xlabel("Reference Genome position")
   plt.ylabel("Percent Identity")
   plt.ylim(75,100)
+  plt.xlim(min(ref_pos)-100, max(ref_pos)+100)
   plt.show()
   
 
