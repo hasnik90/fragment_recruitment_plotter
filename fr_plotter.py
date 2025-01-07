@@ -67,15 +67,16 @@ def main(input_file):
     print("No valid alignment data found in the SAM file.")
     sys.exit(1)
   
+
   #Create the Fragment Recruiment Plot
   size = 10
-  for x,y in zip(ref_pos,percent_id):
+  for x,y in zip(sorted_ref_pos,sorted_percent_id):
     plt.scatter(x, y, label=f'({x}, {y})',c='green', s=size, edgecolors='none')
   plt.title(f'Fragment Recruitment Plot for {xLabel}')
   plt.xlabel("Reference Genome position")
   plt.ylabel("Percent Identity")
   plt.ylim(75,100)
-  plt.xlim(min(ref_pos)-100, max(ref_pos)+100)
+  plt.xlim(min(sorted_ref_pos)-1000, max(sorted_ref_pos)+1000)
   plt.show()
   
 
